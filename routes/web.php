@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\PageController;
 
 /*
@@ -28,3 +29,8 @@ Route::get('/pricing', [PageController::class, 'pricing'])->name('pricing');
 
 Auth::routes();
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+
+
+Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
+    Route::resource('slides', SlideController::class);
+});

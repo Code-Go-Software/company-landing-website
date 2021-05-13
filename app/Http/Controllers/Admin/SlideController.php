@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class SlideController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.slides.index');
     }
 
     /**
@@ -23,7 +24,7 @@ class SlideController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.slides.create');
     }
 
     /**
@@ -45,7 +46,7 @@ class SlideController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect('/dashboard/slides');
     }
 
     /**
@@ -56,7 +57,7 @@ class SlideController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('dashboard.slides.edit');
     }
 
     /**
