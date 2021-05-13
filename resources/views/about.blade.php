@@ -23,12 +23,10 @@
             <div class="container">
 
                 <div class="row content">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <h2>Eum ipsam laborum deleniti velitena</h2>
                         <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assum perenda sruen jonee trave
                         </h3>
-                    </div>
-                    <div class="col-lg-6 pt-4 pt-lg-0">
                         <p>
                             Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
                             in voluptate
