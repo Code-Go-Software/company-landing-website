@@ -7,21 +7,27 @@
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title">Edit Slide</h4>
-                            <p class="card-category">Edit Slide On Your Landing Website</p>
+                            <h4 class="card-title">Edit Service</h4>
+                            <p class="card-category">Edit Service That Currently Exists On Your Landing Website</p>
                         </div>
                         <div class="card-body">
                             <form>
 								<div class="row">
 									<div class="col-md-12 mb-3">
-										<img src="{{ asset('assets/img/city.jpg') }}" class="img-fluid">
-										<input type="file" class="form-control">
+										<i class="icofont-chart-bar-graph h1"></i>
+										<select class="form-control">
+											<option value="">Icon</option>
+											<option value="">Icon</option>
+											<option value="">Icon</option>
+											<option value="">Icon</option>
+											<option value="">Icon</option>
+										</select>
 									</div>
 								</div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="bmd-label-floating">Slide Title</label>
+                                            <label class="bmd-label-floating">Service Name</label>
                                             <input type="text" class="form-control">
                                         </div>
                                     </div>
@@ -31,14 +37,14 @@
                                         <div class="form-group">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">
-													Slide Description
+													Service Description
 												</label>
                                                 <textarea class="form-control" rows="5"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary pull-right">Save Slide</button>
+                                <button type="submit" class="btn btn-primary pull-right">Save Service</button>
                                 <div class="clearfix"></div>
                             </form>
                         </div>
