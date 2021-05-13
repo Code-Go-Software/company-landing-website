@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -13,7 +14,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.projects.index');
     }
 
     /**
@@ -23,7 +24,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.projects.create');
     }
 
     /**
@@ -45,7 +46,7 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect('/dashboard/projects');
     }
 
     /**
@@ -56,7 +57,7 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('dashboard.projects.edit');
     }
 
     /**

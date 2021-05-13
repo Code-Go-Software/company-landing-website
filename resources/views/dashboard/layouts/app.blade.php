@@ -67,7 +67,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <li class="nav-item ">
                         <a class="nav-link" href="./typography.html">
                             <i class="material-icons">library_books</i>
-                            <p>Portfolio</p>
+                            <p>Projects</p>
                         </a>
                     </li>
                     <li class="nav-item ">
