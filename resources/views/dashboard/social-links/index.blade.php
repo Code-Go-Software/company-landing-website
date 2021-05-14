@@ -12,7 +12,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-								<div class="col-12">
+								<div class="col-12 mb-3">
 									<a href="/dashboard/social_links/create" class="btn btn-success float-right">New Social Link</a>
 								</div>
                                 <div class="col-12">

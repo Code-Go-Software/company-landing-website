@@ -7,27 +7,24 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title">Services</h4>
-                            <p class="card-category">The Services That Currently Exists On Your Landing Website</p>
+                            <h4 class="card-title">Frequently Asked Questions (FAQs)</h4>
+                            <p class="card-category">FAQs That Currently Exists On Your Landing Website</p>
                         </div>
                         <div class="card-body">
 							<div class="row">
-								<div class="col-12 mb-3">
-									<a href="/dashboard/services/create" class="btn btn-success float-right">New Service</a>
+								<div class="col-12">
+									<a href="/dashboard/faqs/create" class="btn btn-success float-right">New FAQ</a>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<i class="icofont-chart-bar-graph h1"></i>
-									</div>
-									<div class="form-group">
-										<h4>Service Name Goes Here</h4>
+										<h4>Question Goes Here</h4>
 									</div>
 									<div>
 										<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat doloremque voluptates vel aliquam officia aliquid</p>
 									</div>
 									<div class="form-group">
-										<button type="submit" class="btn btn-primary">Edit Service</button>
-										<button type="submit" class="btn btn-danger">Delete Service</button>
+										<button type="submit" class="btn btn-primary">Edit</button>
+										<button type="submit" class="btn btn-danger">Delete</button>
 									</div>
 								</div>							
 							</div>

@@ -11,8 +11,10 @@
                             <p class="card-category">The Slides That Currently Exists On Your Landing Website</p>
                         </div>
                         <div class="card-body">
-							<a href="/dashboard/slides/create" class="btn btn-success float-right">New Slide</a>
 							<div class="row">
+								<div class="col-12 mb-3">
+									<a href="/dashboard/slides/create" class="btn btn-success float-right">New Slide</a>
+								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<img src="{{ asset('assets/img/city.jpg') }}" class="img-fluid">
