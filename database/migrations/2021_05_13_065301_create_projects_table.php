@@ -16,13 +16,15 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('category');
+            $table->unsignedBigInteger('category_id');
             $table->text('description');
             $table->string('link');
             $table->string('image');
             $table->string('client');
             $table->date('finish_date');
             $table->timestamps();
+
+            $table->foreign('category_id')->refrences('id')->on('project_categories')->onDelete('cascade');
         });
     }
 

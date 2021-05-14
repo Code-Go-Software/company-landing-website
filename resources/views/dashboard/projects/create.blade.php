@@ -29,8 +29,9 @@
 								<div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="bmd-label-floating">Project Category</label>
-                                            <input type="text" class="form-control">
+                                            <select class="form-control">
+                                                <option value="1">Category</option>
+                                            </select>
                                         </div>
                                     </div>
 									<div class="col-md-6">

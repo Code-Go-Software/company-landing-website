@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TeamMemberController extends Controller
+class ProjectCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class TeamMemberController extends Controller
      */
     public function index()
     {
-        return view('dashboard.members.index');
+        return view('dashboard.projects.categories');
     }
 
     /**
@@ -24,7 +24,7 @@ class TeamMemberController extends Controller
      */
     public function create()
     {
-        return view('dashboard.members.create');
+        return redirect('dashbaord/projects_categories');
     }
 
     /**
@@ -46,7 +46,7 @@ class TeamMemberController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect('dashbaord/projects_categories');
     }
 
     /**
@@ -57,7 +57,7 @@ class TeamMemberController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.members.edit');
+        return redirect('dashbaord/projects_categories');
     }
 
     /**
@@ -69,7 +69,7 @@ class TeamMemberController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return redirect('dashbaord/projects_categories');
     }
 
     /**

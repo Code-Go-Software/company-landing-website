@@ -53,55 +53,61 @@ The above copyright notice and this permission notice shall be included in all c
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="./user.html">
+                        <a class="nav-link" href="/dashboard/slides">
                             <i class="material-icons">person</i>
                             <p>Slides</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="./tables.html">
+                        <a class="nav-link" href="/dashboard/services">
                             <i class="material-icons">content_paste</i>
                             <p>Services</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="./typography.html">
+                        <a class="nav-link" href="/dashboard/projects">
                             <i class="material-icons">library_books</i>
                             <p>Projects</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="./icons.html">
+                        <a class="nav-link" href="/dashboard/projects_categories">
+                            <i class="material-icons">library_books</i>
+                            <p>Projects Categories</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/dashboard/members">
                             <i class="material-icons">bubble_chart</i>
                             <p>Team Members</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="./map.html">
+                        <a class="nav-link" href="/dashboard/testimonials">
                             <i class="material-icons">location_ons</i>
                             <p>Testimonials</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="./notifications.html">
+                        <a class="nav-link" href="/dashboard/general_information">
                             <i class="material-icons">notifications</i>
                             <p>General Information</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="./rtl.html">
+                        <a class="nav-link" href="/dashboard/links">
                             <i class="material-icons">language</i>
                             <p>Social Media Links</p>
                         </a>
                     </li>
-                    <li class="nav-item active-pro ">
-                        <a class="nav-link" href="./upgrade.html">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard/faqs">
                             <i class="material-icons">unarchive</i>
                             <p>FAQ</p>
                         </a>
                     </li>
-                    <li class="nav-item active-pro ">
-                        <a class="nav-link" href="./upgrade.html">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard/posts">
                             <i class="material-icons">unarchive</i>
                             <p>Blog</p>
                         </a>

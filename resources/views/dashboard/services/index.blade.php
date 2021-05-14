@@ -11,6 +11,7 @@
                             <p class="card-category">The Services That Currently Exists On Your Landing Website</p>
                         </div>
                         <div class="card-body">
+							<a href="/dashboard/services/create" class="btn btn-success float-right">New Service</a>
 							<div class="row">
 								<div class="col-12 col-md-6">
 									<div class="form-group">
