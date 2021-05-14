@@ -14,7 +14,7 @@ class SocialLinkController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.social-links.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class SocialLinkController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.social-links.create');
     }
 
     /**
@@ -46,7 +46,7 @@ class SocialLinkController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect('/dashboard/links');
     }
 
     /**
@@ -57,7 +57,7 @@ class SocialLinkController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('dashboard.social-links.edit');
     }
 
     /**

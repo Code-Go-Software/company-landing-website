@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ProjectCategoryController;
 use App\Http\Controllers\Admin\TeamMemberController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\GeneralInformationController;
+use App\Http\Controllers\Admin\SocialLinkController;
 use App\Http\Controllers\PageController;
 
 /*
@@ -45,4 +46,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::resource('members', TeamMemberController::class);
     Route::resource('testimonials', TestimonialController::class);
     Route::resource('general_informations', GeneralInformationController::class);
+    Route::resource('links', SocialLinkController::class);
 });
