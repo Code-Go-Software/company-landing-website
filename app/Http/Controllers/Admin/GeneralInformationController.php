@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class GeneralInfomationController extends Controller
+class GeneralInformationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class GeneralInfomationController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.general-informations.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class GeneralInfomationController extends Controller
      */
     public function create()
     {
-        //
+        return redirect('/dashboard/general_informations');
     }
 
     /**
@@ -35,7 +35,7 @@ class GeneralInfomationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect('/dashboard/general_informations');
     }
 
     /**
@@ -46,7 +46,7 @@ class GeneralInfomationController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect('/dashboard/general_informations');
     }
 
     /**
@@ -57,7 +57,7 @@ class GeneralInfomationController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('dashboard.general-informations.index');
     }
 
     /**
@@ -80,6 +80,6 @@ class GeneralInfomationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return redirect('/dashboard/general_informations');
     }
 }

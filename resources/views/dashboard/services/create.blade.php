@@ -35,12 +35,10 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">
-													Service Description
-												</label>
-                                                <textarea class="form-control" rows="5"></textarea>
-                                            </div>
+                                            <label class="bmd-label-floating">
+                                                Service Description
+                                            </label>
+                                            <textarea class="form-control" rows="5"></textarea>
                                         </div>
                                     </div>
                                 </div>

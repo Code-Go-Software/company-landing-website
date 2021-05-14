@@ -57,12 +57,10 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">
-													Project Description
-												</label>
-                                                <textarea class="form-control" rows="10"></textarea>
-                                            </div>
+                                            <label class="bmd-label-floating">
+                                                Project Description
+                                            </label>
+                                            <textarea class="form-control" rows="10"></textarea>
                                         </div>
                                     </div>
                                 </div>
