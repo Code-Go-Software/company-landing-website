@@ -20,10 +20,8 @@ class CreatePostsTable extends Migration
             $table->text('content');
             $table->string('image');
             $table->string('author');
-            $table->string('published_at');
+            //$table->string('published_at');
             $table->string('tags');
-            $table->string('image');
-
             $table->timestamps();
         });
     }

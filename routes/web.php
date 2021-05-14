@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\GeneralInformationController;
 use App\Http\Controllers\Admin\SocialLinkController;
 use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\PageController;
 
 /*
@@ -49,4 +50,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::resource('general_informations', GeneralInformationController::class);
     Route::resource('links', SocialLinkController::class);
     Route::resource('faqs', FaqController::class);
+    Route::resource('posts', PostController::class);
 });
