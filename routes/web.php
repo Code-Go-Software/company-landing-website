@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ProjectCategoryController;
 use App\Http\Controllers\Admin\TeamMemberController;
+use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\PageController;
 
 /*
@@ -41,4 +42,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::resource('projects', ProjectController::class);
     Route::resource('projects_categories', ProjectCategoryController::class);
     Route::resource('members', TeamMemberController::class);
+    Route::resource('testimonials', TestimonialController::class);
 });

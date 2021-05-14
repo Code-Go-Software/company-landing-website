@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TeamMemberController extends Controller
+class TestimonialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class TeamMemberController extends Controller
      */
     public function index()
     {
-        return view('dashboard.members.index');
+        return view('dashboard.testimonials.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class TeamMemberController extends Controller
      */
     public function create()
     {
-        return view('dashboard.members.create');
+        return view('dashboard.testimonials.create');
     }
 
     /**
@@ -46,7 +46,7 @@ class TeamMemberController extends Controller
      */
     public function show($id)
     {
-        return redirect('/dashboard/members');
+        return redirect('/dashboard/testimonials');
     }
 
     /**
@@ -57,7 +57,7 @@ class TeamMemberController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.members.edit');
+        return view('dashboard.testimonials.edit');
     }
 
     /**
