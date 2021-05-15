@@ -15,21 +15,33 @@
 								<div class="col-12 mb-3">
 									<a href="/dashboard/slides/create" class="btn btn-success float-right">New Slide</a>
 								</div>
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<img src="{{ asset('assets/img/city.jpg') }}" class="img-fluid">
+								
+								@forelse ($slides as $slide)
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<img src="{{ asset('assets/img/' . $slide->image) }}" class="img-fluid">
+										</div>
+										<div class="form-group">
+											<h4>{{ $slide->title }}</h4>
+										</div>
+										<div>
+											<p>{{ $slide->description }}</p>
+										</div>
+										<div class="form-group">
+											<a href="/dashboard/slides/{{ $slide->id }}/edit" class="btn btn-primary">Edit Slide</a>
+											<form action="/dashboard/slides/{{ $slide->id }}" method="POST" class="d-inline">
+												@csrf
+												@method('DELETE')
+												<button type="submit" class="btn btn-danger">Delete Slide</button>
+											</form>
+										</div>
 									</div>
-									<div class="form-group">
-										<h4>Slide Title Goes Here</h4>
+								@empty
+									<div class="alert text-center col-12">
+										No Images Slides Found
 									</div>
-									<div>
-										<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat doloremque voluptates vel aliquam officia aliquid</p>
-									</div>
-									<div class="form-group">
-										<button type="submit" class="btn btn-primary">Edit Slide</button>
-										<button type="submit" class="btn btn-danger">Delete Slide</button>
-									</div>
-								</div>							
+								@endforelse
+
 							</div>
                         </div>
                     </div>

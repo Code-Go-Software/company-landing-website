@@ -24,7 +24,7 @@ class CreateProjectsTable extends Migration
             $table->date('finish_date');
             $table->timestamps();
 
-            $table->foreign('category_id')->refrences('id')->on('project_categories')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

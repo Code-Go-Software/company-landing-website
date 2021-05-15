@@ -10,4 +10,13 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    /*
+    ** Helper function to create the image upload name
+    */
+    public function create_image_name($prefix, $ext)
+    {
+        return time() . '-' . $prefix . '.' . $ext;
+    }
+
 }

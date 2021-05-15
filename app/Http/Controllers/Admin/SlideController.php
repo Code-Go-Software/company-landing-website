@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use App\Models\Slide;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateSlideRequest;
 
 class SlideController extends Controller
 {
@@ -14,7 +16,9 @@ class SlideController extends Controller
      */
     public function index()
     {
-        return view('dashboard.slides.index');
+        return view('dashboard.slides.index', [
+            'slides' => Slide::all()
+        ]);
     }
 
     /**
@@ -33,9 +37,21 @@ class SlideController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateSlideRequest $request)
     {
-        //
+        $slide = new Slide();
+        $slide->title = $request->title;
+        $slide->read_more_button = $request->read_more;
+        $slide->description = $request->description;
+
+        // Create A Uniaue Name For The Image, This Method Is Extended From The Conroller Class
+        $image_name = $this->create_image_name('slide', $request->image->extension());
+        if(!$request->image->move(public_path('assets/img'), $image_name)) return back()->with('error', 'Failed To Upload Image, Try Again');
+
+        $slide->image = $image_name;
+        $slide->save();
+
+        return redirect('/dashboard/slides')->with('success', 'Slide Image Created Successfully');
     }
 
     /**
@@ -55,9 +71,11 @@ class SlideController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Slide $slide)
     {
-        return view('dashboard.slides.edit');
+        return view('dashboard.slides.edit', [
+            'slide' => $slide
+        ]);
     }
 
     /**
@@ -67,9 +85,32 @@ class SlideController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Slide $slide)
     {
-        //
+        //Check if the user send a new image to validate it
+        if($request->image){
+            $validated = $request->validate([
+                'image' => 'required|mimes:jpg,png,jpeg|max:1024',
+                'read_more' => 'required'
+            ]);
+            //Delete the old image
+            if(file_exists(public_path('assets/img/' . $slide->image))){
+                unlink(public_path('assets/img/' . $slide->image));
+            }
+            //Upload the new image
+            $image_name = $this->create_image_name('slide', $request->image->extension());
+            if(!$request->image->move(public_path('assets/img'), $image_name)) return back()->with('error', 'Failed To Upload Image, Try Again');
+
+            $slide->image = $image_name;
+        }
+        $slide->title = $request->title;
+        $slide->description = $request->description;
+        $slide->read_more_button = $request->read_more;
+
+        $slide->save();
+
+        return redirect('/dashboard/slides')->with('success', 'Slide Image Updated
+         Successfully');
     }
 
     /**
@@ -78,8 +119,13 @@ class SlideController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Slide $slide)
     {
-        //
+        if(file_exists(public_path('assets/img/' . $slide->image))){
+            unlink(public_path('assets/img/' . $slide->image));
+        }
+        $slide->delete();
+
+        return redirect('/dashboard/slides')->with('success', 'Slide Image Deleted Successfully');
     }
 }
