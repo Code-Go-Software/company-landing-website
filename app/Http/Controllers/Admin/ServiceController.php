@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateServiceRequest;
 
 class ServiceController extends Controller
 {
@@ -14,7 +16,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        return view('dashboard.services.index');
+        return view('dashboard.services.index',[
+            'services' => Service::all()
+        ]);
     }
 
     /**
@@ -33,9 +37,16 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateServiceRequest $request)
     {
-        //
+        $service = new Service();
+        $service->icon = $request->icon;
+        $service->name = $request->name;
+        $service->description = $request->description;
+
+        $service->save();
+
+        return redirect('/dashboard/services')->with('success', 'Service Created Successfully');
     }
 
     /**
@@ -55,9 +66,11 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Service $service)
     {
-        return view('dashboard.services.edit');
+        return view('dashboard.services.edit',[
+            'service' => $service
+        ]);
     }
 
     /**
@@ -67,9 +80,15 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateServiceRequest $request, Service $service)
     {
-        //
+        $service->icon = $request->icon;
+        $service->name = $request->name;
+        $service->description = $request->description;
+
+        $service->save();
+
+        return redirect('dashboard/services')->with('success', 'Service Updated Successfully');
     }
 
     /**
@@ -78,8 +97,10 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Service $service)
     {
-        //
+        $service->delete();
+        
+        return redirect('dashboard/services')->with('success', 'Service Deleted Successfully');
     }
 }

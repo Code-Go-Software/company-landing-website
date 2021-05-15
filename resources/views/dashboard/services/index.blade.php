@@ -15,21 +15,33 @@
 								<div class="col-12 mb-3">
 									<a href="/dashboard/services/create" class="btn btn-success float-right">New Service</a>
 								</div>
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<i class="icofont-chart-bar-graph h1"></i>
+								
+								@forelse ($services as $service)
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<i class="{{ $service->icon }} h1"></i>
+										</div>
+										<div class="form-group">
+											<h4>{{ $service->name }}</h4>
+										</div>
+										<div>
+											<p>{{ $service->description }}</p>
+										</div>
+										<div class="form-group">
+											<a href="/dashboard/services/{{ $service->id }}/edit" class="btn btn-primary">Edit Service</a>
+											<form action="/dashboard/services/{{ $service->id }}" method="POST" class="d-inline">
+												@csrf
+												@method('DELETE')
+												<button type="submit" class="btn btn-danger">Delete Service</button>
+											</form>
+										</div>
 									</div>
-									<div class="form-group">
-										<h4>Service Name Goes Here</h4>
+								@empty
+									<div class="alert text-center col-12">
+										No Services Found
 									</div>
-									<div>
-										<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat doloremque voluptates vel aliquam officia aliquid</p>
-									</div>
-									<div class="form-group">
-										<button type="submit" class="btn btn-primary">Edit Service</button>
-										<button type="submit" class="btn btn-danger">Delete Service</button>
-									</div>
-								</div>							
+								@endforelse
+
 							</div>
                         </div>
                     </div>
