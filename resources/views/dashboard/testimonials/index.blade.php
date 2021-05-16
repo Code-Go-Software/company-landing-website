@@ -31,7 +31,7 @@
                                                     {{ $testimonial->opinion }}
                                                 </p>
                                                 <a href="/dashboard/testimonials/{{ $testimonial->id }}/edit" class="btn btn-primary">Edit</a>
-                                                <form action="/dashboard/testimonials/{{ $testimonila->id }}" class="d-inline">
+                                                <form action="/dashboard/testimonials/{{ $testimonial->id }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-danger">Delete</button>

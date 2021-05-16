@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateSocialLinkRequest;
+use App\Models\SocialLink;
 
 class SocialLinkController extends Controller
 {
@@ -14,7 +16,9 @@ class SocialLinkController extends Controller
      */
     public function index()
     {
-        return view('dashboard.social-links.index');
+        return view('dashboard.social-links.index', [
+            'links' => SocialLink::all()
+        ]);
     }
 
     /**
@@ -33,9 +37,15 @@ class SocialLinkController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateSocialLinkRequest $request)
     {
-        //
+        $link = new SocialLink();
+        $link->website = $request->website;
+        $link->link = $request->link;
+
+        $link->save();
+
+        return redirect('/dashboard/links')->with('success', 'Social Media Link Created Successfully');
     }
 
     /**
@@ -55,9 +65,11 @@ class SocialLinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(SocialLink $link)
     {
-        return view('dashboard.social-links.edit');
+        return view('dashboard.social-links.edit', [
+            'link' => $link
+        ]);
     }
 
     /**
@@ -67,9 +79,14 @@ class SocialLinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateSocialLinkRequest $request, SocialLink $link)
     {
-        //
+        $link->website = $request->website;
+        $link->link = $request->link;
+
+        $link->save();
+
+        return redirect('/dashboard/links')->with('success', 'Social Media Link Updated Successfully');
     }
 
     /**
@@ -78,8 +95,10 @@ class SocialLinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(SocialLink $link)
     {
-        //
+        $link->delete();
+
+        return redirect('/dashboard/links')->with('success', 'Social Media Link Deleted Successfully');
     }
 }

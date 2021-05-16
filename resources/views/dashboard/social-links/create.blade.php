@@ -11,14 +11,22 @@
                             <p class="card-category">Add New Social Media Link To Help Your Customers Contact You</p>
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form action="/dashboard/links" method="POST">
+                                @csrf
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <select class="form-control">
-												<option value="">Facebook</option>
-												<option value="">Instagram</option>
+                                            <select class="form-control" name="website" required>
+												<option value="facebook">Facebook</option>
+												<option value="instagram">Instagram</option>
+												<option value="twitter">Twitter</option>
+												<option value="linkedin">LinkedIn</option>
 											</select>
+
+                                            @error('website')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+
                                         </div>
                                     </div>
                                 </div>
@@ -26,7 +34,12 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Profile Link</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="link" value="{{ old('link') }}" required>
+
+                                            @error('link')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+
                                         </div>
                                     </div>
                                 </div>

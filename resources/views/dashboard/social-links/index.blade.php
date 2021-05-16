@@ -13,33 +13,35 @@
                         <div class="card-body">
                             <div class="row">
 								<div class="col-12 mb-3">
-									<a href="/dashboard/social_links/create" class="btn btn-success float-right">New Social Link</a>
+									<a href="/dashboard/links/create" class="btn btn-success float-right">New Social Link</a>
 								</div>
                                 <div class="col-12">
                                     <div class="table-responsive">
 										<h4>Current Social Media Links</h4>
                                         <table class="table">
                                             <tbody>
-                                                <tr>
-                                                    <td>Facebook</td>
-													<td>www.facebook.com</td>
-                                                    <td>
-                                                        <button class="btn btn-primary">Edit</button>
-                                                    </td>
-													<td>
-                                                        <button class="btn btn-danger">Delete</button>
-                                                    </td>
-                                                </tr>
-												<tr>
-                                                    <td>Facebook</td>
-													<td>www.facebook.com</td>
-                                                    <td>
-                                                        <button class="btn btn-primary">Edit</button>
-                                                    </td>
-													<td>
-                                                        <button class="btn btn-danger">Delete</button>
-                                                    </td>
-                                                </tr>
+                                                
+                                                @forelse ($links as $link)
+                                                    <tr>
+                                                        <td>{{ $link->website }}</td>
+                                                        <td>{{ $link->link }}</td>
+                                                        <td>
+                                                            <a href="/dashboard/links/{{ $link->id }}/edit" class="btn btn-primary">Edit</a>
+                                                        </td>
+                                                        <td>
+                                                            <form action="/dashboard/links/{{ $link->id }}" method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button class="btn btn-danger">Delete</button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                @empty
+                                                    <tr>
+                                                        <td colspan="4">No Social Media Links Found</td>
+                                                    </tr>
+                                                @endforelse
+												
                                             </tbody>
                                         </table>
                                     </div>

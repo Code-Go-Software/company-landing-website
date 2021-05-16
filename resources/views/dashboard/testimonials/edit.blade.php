@@ -11,13 +11,13 @@
                             <p class="card-category">Edit Customer Testimonial That Currently Exists On Your Landing Website</p>
                         </div>
                         <div class="card-body">
-                            <form action="/dashboard/testimonials/{{ $testimonial->id }}">
+                            <form action="/dashboard/testimonials/{{ $testimonial->id }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
 								<div class="row">
 									<div class="card card-profile col-md-12 mb-3">
 										<div class="card-avatar mt-1">
-                                            <img class="img" src="{{ asset('assets/img/' . $testimonial->id) }}" />
+                                            <img class="img" src="{{ asset('assets/img/' . $testimonial->image) }}" />
                                         </div>
 										<input type="file" class="form-control" name="image">
 									</div>

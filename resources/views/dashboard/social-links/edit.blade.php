@@ -11,14 +11,23 @@
                             <p class="card-category">Edit Social Media Link Currently Exists On Your Landing Website</p>
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form action="/dashboard/links/{{ $link->id }}" method="POST">
+                                @csrf
+                                @method('PUT')
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <select class="form-control">
-												<option value="">Facebook</option>
-												<option value="">Instagram</option>
+                                            <select class="form-control" name="website" required>
+												<option value="facebook" {{ ($link->website == 'facebook') ? 'selected' : '' }}>Facebook</option>
+												<option value="instagram" {{ ($link->website == 'instagram') ? 'selected' : '' }}>Instagram</option>
+												<option value="twitter" {{ ($link->website == 'twitter') ? 'selected' : '' }}>Twitter</option>
+												<option value="linkedin" {{ ($link->website == 'linkedin') ? 'selected' : '' }}>LinkedIn</option>
 											</select>
+
+                                            @error('website')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+
                                         </div>
                                     </div>
                                 </div>
@@ -26,7 +35,12 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Profile Link</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="link" value="{{ $link->link }}" required>
+
+                                            @error('link')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+
                                         </div>
                                     </div>
                                 </div>
