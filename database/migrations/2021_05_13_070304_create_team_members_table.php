@@ -18,11 +18,11 @@ class CreateTeamMembersTable extends Migration
             $table->string('name');
             $table->string('position');
             $table->string('image');
-            $table->string('description');
-            $table->string('facebook');
-            $table->string('twitter');
-            $table->string('instagram');
-            $table->string('linkedin');
+            $table->string('description')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('linkedin')->nullable();
             $table->timestamps();
         });
     }

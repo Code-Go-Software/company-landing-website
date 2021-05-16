@@ -15,56 +15,49 @@
 								<div class="col-12 mb-3">
 									<a href="/dashboard/members/create" class="btn btn-success float-right">New Team Member</a>
 								</div>
-                                <div class="col-md-6">
-                                    <div class="card card-profile">
-                                        <div class="card-avatar">
-                                            <a href="javascript:;">
-                                                <img class="img" src="{{ asset('assets/img/faces/marc.jpg') }}" />
-                                            </a>
-                                        </div>
-                                        <div class="card-body">
-                                            <h6 class="card-category text-gray">CEO / Co-Founder</h6>
-                                            <h4 class="card-title">Alec Thompson</h4>
-                                            <p class="card-description">
-                                                Don't be scared of the truth because we need to restart the human foundation
-                                                in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design
-                                                but the back is...
-                                            </p>
-                                            <a href="javascript:;" class="btn btn-dark btn-sm btn-round">F</a>
-											<a href="javascript:;" class="btn btn-dark btn-sm btn-round">I</a>
-											<a href="javascript:;" class="btn btn-dark btn-sm btn-round">T</a>
-											<a href="javascript:;" class="btn btn-dark btn-sm btn-round">L</a>
-											<br>
-											<button class="btn btn-primary">Edit</button>
-											<button class="btn btn-danger">Delete</button>
-                                        </div>
-                                    </div>
-                                </div>
-								<div class="col-md-6">
-                                    <div class="card card-profile">
-                                        <div class="card-avatar">
-                                            <a href="javascript:;">
-                                                <img class="img" src="{{ asset('assets/img/faces/marc.jpg') }}" />
-                                            </a>
-                                        </div>
-                                        <div class="card-body">
-                                            <h6 class="card-category text-gray">CEO / Co-Founder</h6>
-                                            <h4 class="card-title">Alec Thompson</h4>
-                                            <p class="card-description">
-                                                Don't be scared of the truth because we need to restart the human foundation
-                                                in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design
-                                                but the back is...
-                                            </p>
-                                            <a href="javascript:;" class="btn btn-dark btn-sm btn-round">F</a>
-											<a href="javascript:;" class="btn btn-dark btn-sm btn-round">I</a>
-											<a href="javascript:;" class="btn btn-dark btn-sm btn-round">T</a>
-											<a href="javascript:;" class="btn btn-dark btn-sm btn-round">L</a>
-											<br>
-											<button class="btn btn-primary">Edit</button>
-											<button class="btn btn-danger">Delete</button>
+                                
+                                @forelse ($members as $member)
+                                    <div class="col-md-6">
+                                        <div class="card card-profile">
+                                            <div class="card-avatar">
+                                                <a href="javascript:;">
+                                                    <img class="img" src="{{ asset('assets/img/' . $member->image) }}" />
+                                                </a>
+                                            </div>
+                                            <div class="card-body">
+                                                <h6 class="card-category text-gray">{{ $member->position }}</h6>
+                                                <h4 class="card-title">{{ $member->name }}</h4>
+                                                <p class="card-description">
+                                                    {{ $member->description }}
+                                                </p>
+                                                @if ($member->facebook)
+                                                    <a href="{{ $member->facebook }}" class="btn btn-dark btn-sm btn-round">F</a>
+                                                @endif
+                                                @if ($member->instagram)
+                                                    <a href="{{ $member->instagram }}" class="btn btn-dark btn-sm btn-round">I</a>
+                                                @endif
+                                                @if ($member->twitter)
+                                                    <a href="{{ $member->twitter }}" class="btn btn-dark btn-sm btn-round">T</a>
+                                                @endif
+                                                @if ($member->linkedin)
+                                                    <a href="{{ $member->linkedin }}" class="btn btn-dark btn-sm btn-round">L</a>
+                                                @endif
+                                                <br>
+                                                <a href="/dashboard/members/{{ $member->id }}/edit" class="btn btn-primary">Edit</a>
+                                                <form action="/dashboard/members/{{ $member->id }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                @empty
+                                    <div class="alert text-center col-12">
+                                        No Team Members Found
+                                    </div>
+                                @endforelse
+
                             </div>
                         </div>
                     </div>
