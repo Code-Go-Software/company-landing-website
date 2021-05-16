@@ -11,20 +11,26 @@
                             <p class="card-category">Add New Customer Testimonial To Your Landing Website</p>
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form action="/dashboard/testimonials" method="POST" enctype="multipart/form-data">
+                                @csrf
 								<div class="row">
 									<div class="card card-profile col-md-12 mb-3">
 										<div class="card-avatar mt-1">
                                             <img class="img" src="{{ asset('assets/img/faces/marc.jpg') }}" />
                                         </div>
-										<input type="file" class="form-control">
+										<input type="file" class="form-control" name="image">
 									</div>
 								</div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Customer Name</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="name" value="{{ old('name') }}" required>
+
+                                            @error('name')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+
                                         </div>
                                     </div>
                                 </div>
@@ -32,7 +38,12 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Customer Position</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="position" value="{{ old('position') }}" required>
+
+                                            @error('position')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+
                                         </div>
                                     </div>
                                 </div>
@@ -43,7 +54,12 @@
                                                 <label class="bmd-label-floating">
 													Opinion
 												</label>
-                                                <textarea class="form-control" rows="5"></textarea>
+                                                <textarea class="form-control" name="opinion" rows="5" required>{{ old('opinion') }}</textarea>
+
+                                                @error('opinion')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
+
                                             </div>
                                         </div>
                                     </div>

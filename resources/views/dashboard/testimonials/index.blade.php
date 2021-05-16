@@ -15,46 +15,36 @@
 								<div class="col-12 mb-3">
 									<a href="/dashboard/testimonials/create" class="btn btn-success float-right">New Testimonial</a>
 								</div>
-                                <div class="col-md-6">
-                                    <div class="card card-profile">
-                                        <div class="card-avatar">
-                                            <a href="javascript:;">
-                                                <img class="img" src="{{ asset('assets/img/faces/marc.jpg') }}" />
-                                            </a>
-                                        </div>
-                                        <div class="card-body">
-                                            <h6 class="card-category text-gray">CEO / Co-Founder</h6>
-                                            <h4 class="card-title">Alec Thompson</h4>
-                                            <p class="card-description">
-                                                Don't be scared of the truth because we need to restart the human foundation
-                                                in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design
-                                                but the back is...
-                                            </p>
-											<button class="btn btn-primary">Edit</button>
-											<button class="btn btn-danger">Delete</button>
-                                        </div>
-                                    </div>
-                                </div>
-								<div class="col-md-6">
-                                    <div class="card card-profile">
-                                        <div class="card-avatar">
-                                            <a href="javascript:;">
-                                                <img class="img" src="{{ asset('assets/img/faces/marc.jpg') }}" />
-                                            </a>
-                                        </div>
-                                        <div class="card-body">
-                                            <h6 class="card-category text-gray">CEO / Co-Founder</h6>
-                                            <h4 class="card-title">Alec Thompson</h4>
-                                            <p class="card-description">
-                                                Don't be scared of the truth because we need to restart the human foundation
-                                                in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design
-                                                but the back is...
-                                            </p>
-											<button class="btn btn-primary">Edit</button>
-											<button class="btn btn-danger">Delete</button>
+                                
+                                @forelse ($testimonials as $testimonial)
+                                    <div class="col-md-6">
+                                        <div class="card card-profile">
+                                            <div class="card-avatar">
+                                                <a href="javascript:;">
+                                                    <img class="img" src="{{ asset('assets/img/' . $testimonial->image) }}" />
+                                                </a>
+                                            </div>
+                                            <div class="card-body">
+                                                <h6 class="card-category text-gray">{{ $testimonial->position }}</h6>
+                                                <h4 class="card-title">{{ $testimonial->name }}</h4>
+                                                <p class="card-description">
+                                                    {{ $testimonial->opinion }}
+                                                </p>
+                                                <a href="/dashboard/testimonials/{{ $testimonial->id }}/edit" class="btn btn-primary">Edit</a>
+                                                <form action="/dashboard/testimonials/{{ $testimonila->id }}" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                @empty
+                                    <div class="alert col-12 text-center">
+                                        No Testimonials Found
+                                    </div>
+                                @endforelse
+
                             </div>
                         </div>
                     </div>
