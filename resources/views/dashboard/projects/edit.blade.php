@@ -42,7 +42,9 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <select class="form-control" name="category_id" required>
-                                                <option value="1">Category</option>
+                                                @foreach ($categories as $category)
+                                                    <option value="{{ $category->id }}"  {{ ($category->id == $project->category_id) ? 'selected' : '' }}>{{ $category->name }}</option>
+                                                @endforeach
                                             </select>
 
                                             @error('category_id')

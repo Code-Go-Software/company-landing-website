@@ -44,7 +44,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::resource('slides', SlideController::class);
     Route::resource('services', ServiceController::class);
     Route::resource('projects', ProjectController::class);
-    Route::resource('projects_categories', ProjectCategoryController::class);
+    Route::resource('categories', ProjectCategoryController::class);
     Route::resource('members', TeamMemberController::class);
     Route::resource('testimonials', TestimonialController::class);
     Route::resource('general_informations', GeneralInformationController::class);

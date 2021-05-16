@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Http\Requests\CreateCategoryRequest;
 
 class ProjectCategoryController extends Controller
 {
@@ -14,7 +16,9 @@ class ProjectCategoryController extends Controller
      */
     public function index()
     {
-        return view('dashboard.projects.categories');
+        return view('dashboard.projects.categories', [
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -24,7 +28,7 @@ class ProjectCategoryController extends Controller
      */
     public function create()
     {
-        return redirect('dashbaord/projects_categories');
+        return redirect('dashbaord/categories');
     }
 
     /**
@@ -33,9 +37,13 @@ class ProjectCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCategoryRequest $request)
     {
-        //
+        $category = new Category();
+        $category->name = $request->name;
+        $category->save();
+
+        return redirect('/dashboard/categories')->with('success', 'Category Created Successfully');
     }
 
     /**
@@ -46,7 +54,7 @@ class ProjectCategoryController extends Controller
      */
     public function show($id)
     {
-        return redirect('dashbaord/projects_categories');
+        return redirect('dashbaord/categories');
     }
 
     /**
@@ -57,7 +65,7 @@ class ProjectCategoryController extends Controller
      */
     public function edit($id)
     {
-        return redirect('dashbaord/projects_categories');
+        return redirect('dashbaord/categories');
     }
 
     /**
@@ -69,7 +77,7 @@ class ProjectCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return redirect('dashbaord/projects_categories');
+        return redirect('dashbaord/categories');
     }
 
     /**
@@ -78,8 +86,12 @@ class ProjectCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        if($category->id == 1)
+            return redirect('/dashboard/categories')->with('error', 'Sorry, We Can\'t Delete The Main Category');
+
+        $category->delete();
+        return redirect('/dashboard/categories')->with('success', 'Category Deleted Successfully');
     }
 }

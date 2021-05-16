@@ -13,17 +13,23 @@
                         <div class="card-body">
                             <div class="row">
 								<div class="col-12">
-									<form action="">
+									<form action="/dashboard/categories" method="POST">
+                                        @csrf
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group">
 													<label class="bmd-label-floating">Category Name</label>
-													<input type="text" class="form-control">
+													<input type="text" class="form-control" name="name" value="{{ old('name') }}">
+
+                                                    @error('name')
+                                                        <small class="text-danger">{{ $message }}</small>
+                                                    @enderror
+
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
-													<button class="btn btn-success">Create Category</button>
+													<button type="submit" class="btn btn-success">Create Category</button>
 												</div>
 											</div>
 										</div>
@@ -34,20 +40,25 @@
 										<h4>Current Categories</h4>
                                         <table class="table">
                                             <tbody>
-                                                <tr>
-                                                    <td>Category 1</td>
-													<td>12 Project</td>
-                                                    <td>
-                                                        <button class="btn btn-danger">Delete</button>
-                                                    </td>
-                                                </tr>
-												<tr>
-                                                    <td>Category 1</td>
-													<td>12 Project</td>
-                                                    <td>
-                                                        <button class="btn btn-danger">Delete</button>
-                                                    </td>
-                                                </tr>
+                                                
+                                                @forelse ($categories as $category)
+                                                    <tr>
+                                                        <td>{{ $category->name }}</td>
+                                                        <td>{{ $category->projects->count() }} Project</td>
+                                                        <td>
+                                                            <form action="/dashboard/categories/{{ $category->id }}" method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                @empty
+                                                    <tr>
+                                                        <td colspan="3">No Categories Found</td>
+                                                    </tr>
+                                                @endforelse
+
                                             </tbody>
                                         </table>
                                     </div>

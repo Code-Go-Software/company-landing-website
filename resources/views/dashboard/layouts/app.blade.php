@@ -71,7 +71,7 @@ The above copyright notice and this permission notice shall be included in all c
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="/dashboard/projects_categories">
+                        <a class="nav-link" href="/dashboard/categories">
                             <i class="material-icons">library_books</i>
                             <p>Projects Categories</p>
                         </a>

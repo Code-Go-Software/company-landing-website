@@ -19,7 +19,7 @@ class ProjectController extends Controller
     public function index()
     {
         return view('dashboard.projects.index', [
-            'projects' => Project::all()
+            'projects' => Project::all(),
         ]);
     }
 
@@ -30,7 +30,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('dashboard.projects.create');
+        return view('dashboard.projects.create', [
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -79,7 +81,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         return view('dashboard.projects.edit', [
-            'project' => $project
+            'project' => $project,
+            'categories' => Category::all()
         ]);
     }
 
@@ -124,6 +127,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        
         if(file_exists(public_path('assets/img/' . $project->image))){
             unlink(public_path('assets/img/' . $project->image));
         }
