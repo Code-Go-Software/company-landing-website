@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateSlideRequest extends FormRequest
+class CreateProjectRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,16 @@ class CreateSlideRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'read_more' => 'required'
+            'name' => 'required',
+            'category_id' => 'required|numeric',
+            'description' => 'required',
+            'client' => 'required',
+            'finish_date' => 'required',
         ];
 
         if(request()->image)
             $rules['image'] = 'required|mimes:jpg,png,jpeg|max:1024';
-
+            
         return $rules;
     }
 }

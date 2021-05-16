@@ -18,7 +18,7 @@ class CreateProjectsTable extends Migration
             $table->string('name');
             $table->unsignedBigInteger('category_id');
             $table->text('description');
-            $table->string('link');
+            $table->string('link')->nullable();
             $table->string('image');
             $table->string('client');
             $table->date('finish_date');

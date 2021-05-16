@@ -85,14 +85,10 @@ class SlideController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Slide $slide)
+    public function update(CreateSlideRequest $request, Slide $slide)
     {
-        //Check if the user send a new image to validate it
+        //Check if the user send a new image to delete the old and upload the new
         if($request->image){
-            $validated = $request->validate([
-                'image' => 'required|mimes:jpg,png,jpeg|max:1024',
-                'read_more' => 'required'
-            ]);
             //Delete the old image
             if(file_exists(public_path('assets/img/' . $slide->image))){
                 unlink(public_path('assets/img/' . $slide->image));
@@ -109,8 +105,7 @@ class SlideController extends Controller
 
         $slide->save();
 
-        return redirect('/dashboard/slides')->with('success', 'Slide Image Updated
-         Successfully');
+        return redirect('/dashboard/slides')->with('success', 'Slide Image Updated Successfully');
     }
 
     /**
