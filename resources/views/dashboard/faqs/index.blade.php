@@ -15,18 +15,30 @@
 								<div class="col-12">
 									<a href="/dashboard/faqs/create" class="btn btn-success float-right">New FAQ</a>
 								</div>
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<h4>Question Goes Here</h4>
+								
+								@forelse ($faqs as $faq)
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<h4>{{ $faq->question }}</h4>
+										</div>
+										<div>
+											<p>{{ $faq->answer }}</p>
+										</div>
+										<div class="form-group">
+											<a href="/dashboard/faqs/{{ $faq->id }}/edit" type="submit" class="btn btn-primary">Edit</a>
+											<form action="/dashboard/faqs/{{ $faq->id }}" method="POST" class="d-inline">
+												@csrf
+												@method('DELETE')
+												<button type="submit" class="btn btn-danger">Delete</button>
+											</form>
+										</div>
 									</div>
-									<div>
-										<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat doloremque voluptates vel aliquam officia aliquid</p>
+								@empty
+									<div class="col-12 text-center alert">
+										No FAQS Found
 									</div>
-									<div class="form-group">
-										<button type="submit" class="btn btn-primary">Edit</button>
-										<button type="submit" class="btn btn-danger">Delete</button>
-									</div>
-								</div>							
+								@endforelse
+
 							</div>
                         </div>
                     </div>

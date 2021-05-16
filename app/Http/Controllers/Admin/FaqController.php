@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateFaqRequest;
+use App\Models\Faq;
 
 class FaqController extends Controller
 {
@@ -14,7 +16,9 @@ class FaqController extends Controller
      */
     public function index()
     {
-        return view('dashboard.faqs.index');
+        return view('dashboard.faqs.index', [
+            'faqs' => Faq::all()
+        ]);
     }
 
     /**
@@ -33,9 +37,15 @@ class FaqController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateFaqRequest $request)
     {
-        
+        $faq = new Faq();
+        $faq->question = $request->question;
+        $faq->answer = $request->answer;
+
+        $faq->save();
+
+        return redirect('/dashboard/faqs')->with('success', 'FAQ Created Successfully');
     }
 
     /**
@@ -55,9 +65,11 @@ class FaqController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Faq $faq)
     {
-        return view('dashboard.faqs.edit');
+        return view('dashboard.faqs.edit', [
+            'faq' => $faq
+        ]);
     }
 
     /**
@@ -67,9 +79,14 @@ class FaqController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateFaqRequest $request, Faq $faq)
     {
-        //
+        $faq->question = $request->question;
+        $faq->answer = $request->answer;
+
+        $faq->save();
+
+        return redirect('/dashboard/faqs')->with('success', 'FAQ Updated Successfully');
     }
 
     /**
@@ -78,8 +95,10 @@ class FaqController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Faq $faq)
     {
-        //
+        $faq->delete();
+
+        return redirect('/dashboard/faqs')->with('success', 'FAQ Deleted Successfully');
     }
 }

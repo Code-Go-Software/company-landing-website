@@ -11,12 +11,18 @@
                             <p class="card-category">Add New FAQ To Your Landing Website To Help Answer Your Customers Expected Questions</p>
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form action="/dashboard/faqs" method="POST">
+                                @csrf
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Question</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="question" value="{{ old('question') }}" required>
+
+                                            @error('question')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+
                                         </div>
                                     </div>
                                 </div>
@@ -26,7 +32,12 @@
                                             <label class="bmd-label-floating">
                                                 Answer
                                             </label>
-                                            <textarea class="form-control" rows="10"></textarea>
+                                            <textarea class="form-control" name="answer" rows="10" required>{{ old('answer') }}</textarea>
+
+                                            @error('answer')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+
                                         </div>
                                     </div>
                                 </div>
