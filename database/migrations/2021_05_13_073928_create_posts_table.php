@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
             $table->string('image');
             $table->string('author');
             //$table->string('published_at');
-            $table->string('tags');
+            $table->string('tags')->nullable();
             $table->timestamps();
         });
     }

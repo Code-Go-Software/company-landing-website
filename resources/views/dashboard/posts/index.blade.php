@@ -15,22 +15,43 @@
 								<div class="col-12 mb-3">
 									<a href="/dashboard/posts/create" class="btn btn-success float-right">New Post</a>
 								</div>
-								<div class="col-12 col-md-4">
-									<div class="form-group">
-										<img src="{{ asset('assets/img/city.jpg') }}" class="img-fluid">
+								
+								@forelse ($posts as $post)
+									<div class="col-12 col-md-4">
+										<div class="form-group">
+											<img src="{{ asset('assets/img/' . $post->image) }}" class="img-fluid">
+										</div>
+										<div class="form-group">
+											<a href="/dashboard/posts/{{ $post->id }}" class="h4">{{ $post->title }}</a>
+										</div>
+										<div>
+											<p>{{ $post->excert }}</p>
+										</div>
+										<i class="text-primary">{{ $post->author }}, {{ $post->created_at }}</i>
+										<div class="form-group">
+										
+											@forelse (explode(',', $post->tags) as $tag)
+												<span class="badge badge-primary">{{ $tag }}</span>
+											@empty
+												<span class="text-secondary">No Tags</span>
+											@endforelse
+	
+										</div>
+										<div class="form-group">
+											<a href="/dashboard/posts/{{ $post->id }}/edit" class="btn btn-primary">Edit</a>
+											<form action="/dashboard/posts/{{ $post->id }}" method="POST" class="d-inline">
+												@csrf
+												@method('DELETE')
+												<button type="submit" class="btn btn-danger">Delete</button>
+											</form>
+										</div>
 									</div>
-									<div class="form-group">
-										<a href="#" class="h4">Post Title Goes Here</a>
+								@empty
+									<div class="alert col-12 text-center">
+										No Blog Posts Found
 									</div>
-									<div>
-										<p>Excert Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat doloremque voluptates vel aliquam officia aliquid</p>
-									</div>
-									<i class="text-dark">Post Author</i>
-									<div class="form-group">
-										<button type="submit" class="btn btn-primary">Edit</button>
-										<button type="submit" class="btn btn-danger">Delete</button>
-									</div>
-								</div>							
+								@endforelse
+
 							</div>
                         </div>
                     </div>
