@@ -33,7 +33,8 @@ Route::get('/team', [PageController::class, 'team'])->name('team');
 Route::get('/blog', [PageController::class, 'blog'])->name('blog');
 Route::get('/portfolio', [PageController::class, 'portfolio'])->name('portfolio');
 Route::get('/testimonials', [PageController::class, 'testimonials'])->name('testimonials');
-Route::get('/pricing', [PageController::class, 'pricing'])->name('pricing');
+Route::get('/posts/{post}', [PageController::class, 'post']);
+Route::get('/projects/{project}', [PageController::class, 'project']);
 
 
 Auth::routes();

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Sailor Bootstrap Template - Index</title>
+    <title>@yield('title')</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -38,7 +38,7 @@
     <header id="header" class="fixed-top ">
         <div class="container d-flex align-items-center">
 
-            <h1 class="logo"><a href="index.html">Sailor</a></h1>
+            <h1 class="logo"><a href="{{ route('home') }}">{{ $general->where('key', 'website_name')->first()->value }}</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -57,7 +57,6 @@
 
                     <li><a href="{{ route('services') }}">Services</a></li>
                     <li><a href="{{ route('portfolio') }}">Portfolio</a></li>
-                    <li><a href="{{ route('pricing') }}">Pricing</a></li>
                     <li><a href="{{ route('blog') }}">Blog</a></li>
                     <li><a href="{{ route('contact') }}">Contact</a></li>
 
@@ -80,19 +79,16 @@
 
                     <div class="col-lg-3 col-md-6">
                         <div class="footer-info">
-                            <h3>Sailor</h3>
+                            <h3>{{ $general->where('key', 'website_name')->first()->value }}</h3>
                             <p>
-                                A108 Adam Street <br>
-                                NY 535022, USA<br><br>
-                                <strong>Phone:</strong> +1 5589 55488 55<br>
-                                <strong>Email:</strong> info@example.com<br>
+                                {{ $general->where('key', 'address')->first()->value }}<br>
+                                <strong>Phone:</strong> {{ $general->where('key', 'phone')->first()->value }}<br>
+                                <strong>Email:</strong> {{ $general->where('key', 'email')->first()->value }}<br>
                             </p>
                             <div class="social-links mt-3">
-                                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                                @foreach ($social_links as $link)
+                                    <a href="{{ $link->link }}" class="{{ $link->website }}"><i class="bx bxl-{{ $link->website }}"></i></a>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -100,11 +96,11 @@
                     <div class="col-lg-2 col-md-6 footer-links">
                         <h4>Useful Links</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{{ route('home') }}">Home</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{{ route('about') }}">About us</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{{ route('services') }}">Services</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{{ route('team') }}">Our Team Members</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{{ route('testimonials') }}">Testimonials</a></li>
                         </ul>
                     </div>
 
@@ -134,7 +130,7 @@
 
         <div class="container">
             <div class="copyright">
-                &copy; Copyright <strong><span>Sailor</span></strong>. All Rights Reserved
+                &copy; Copyright <strong><span>{{ $general->where('key', 'website_name')->first()->value }}</span></strong>. All Rights Reserved
             </div>
         </div>
     </footer><!-- End Footer -->

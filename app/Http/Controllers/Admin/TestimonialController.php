@@ -94,7 +94,7 @@ class TestimonialController extends Controller
         //Check if the user send a new image to delete the old and upload the new
         if($request->image){
             //Delete the old image
-            if(file_exists(public_path('assets/img/' . $testimonial->image))){
+            if(file_exists(public_path('assets/img/' . $testimonial->image)) && is_file(public_path('assets/img/' . $testimonial->image))){
                 unlink(public_path('assets/img/' . $testimonial->image));
             }
             //Upload the new image
@@ -120,7 +120,7 @@ class TestimonialController extends Controller
      */
     public function destroy(Testimonial $testimonial)
     {
-        if(file_exists(public_path('assets/img/' . $testimonial->image))){
+        if(file_exists(public_path('assets/img/' . $testimonial->image)) && is_file(public_path('assets/img/' . $testimonial->image))){
             unlink(public_path('assets/img/' . $testimonial->image));
         }
         $testimonial->delete();
