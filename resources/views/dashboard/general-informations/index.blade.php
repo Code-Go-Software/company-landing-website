@@ -3,6 +3,9 @@
 @section('content')
     <div class="content">
         <div class="container-fluid">
+
+            @include('dashboard.layouts.notifications')
+
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
