@@ -1,5 +1,7 @@
 @extends('dashboard.layouts.app')
 
+@section('page-name', 'Edit Team Member Data')
+
 @section('content')
     <div class="content">
         <div class="container-fluid">

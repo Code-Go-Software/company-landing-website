@@ -1,5 +1,7 @@
 @extends('dashboard.layouts.app')
 
+@section('page-name', 'Social Media Links')
+
 @section('content')
     <div class="content">
         <div class="container-fluid">

@@ -148,7 +148,10 @@ The above copyright notice and this permission notice shall be included in all c
                                     </p>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                                    <a class="dropdown-item" href="#">Log out</a>
+                                    <form action="/logout" method="POST" class="d-inline">
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger btn-block">Log Out</button>
+                                    </form>
                                 </div>
                             </li>
                         </ul>
@@ -411,6 +414,12 @@ The above copyright notice and this permission notice shall be included in all c
                         clearInterval(simulateWindowResize);
                     }, 1000);
 
+                });
+
+                // show a confirmation box before delete any item
+                $('form .btn-danger').click(function(e){
+                    if(!confirm('Are You Sure?'))
+                        e.preventDefault();
                 });
             });
         });
