@@ -47,7 +47,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
     Route::resource('categories', ProjectCategoryController::class);
     Route::resource('members', TeamMemberController::class);
     Route::resource('testimonials', TestimonialController::class);
-    Route::resource('general_informations', GeneralInformationController::class);
+    Route::get('general_information', [GeneralInformationController::class, 'index']);
+    Route::put('general_information', [GeneralInformationController::class, 'update']);
     Route::resource('links', SocialLinkController::class);
     Route::resource('faqs', FaqController::class);
     Route::resource('posts', PostController::class);

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateGeneralInformationRequest;
+use App\Models\GeneralInformation;
 
 class GeneralInformationController extends Controller
 {
@@ -24,7 +26,7 @@ class GeneralInformationController extends Controller
      */
     public function create()
     {
-        return redirect('/dashboard/general_informations');
+        return redirect('/dashboard/general_information');
     }
 
     /**
@@ -35,7 +37,7 @@ class GeneralInformationController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect('/dashboard/general_informations');
+        return redirect('/dashboard/general_information');
     }
 
     /**
@@ -46,7 +48,7 @@ class GeneralInformationController extends Controller
      */
     public function show($id)
     {
-        return redirect('/dashboard/general_informations');
+        return redirect('/dashboard/general_information');
     }
 
     /**
@@ -57,7 +59,7 @@ class GeneralInformationController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.general-informations.index');
+        return redirect('/dashboard/general_information');
     }
 
     /**
@@ -67,9 +69,27 @@ class GeneralInformationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateGeneralInformationRequest $request)
     {
-        //
+        $website_name = GeneralInformation::where('key', 'website_name')->get();
+        $address = GeneralInformation::where('key', 'address')->get();
+        $phone = GeneralInformation::where('key', 'phone')->get();
+        $email = GeneralInformation::where('key', 'email')->get();
+        $about_us = GeneralInformation::where('key', 'about_us')->get();
+
+        $website_name->first()->value = $request->website_name;
+        $address->first()->value = $request->address;
+        $phone->first()->value = $request->phone;
+        $email->first()->value = $request->email;
+        $about_us->first()->value = $request->about_us;
+
+        $website_name->first()->save();
+        $address->first()->save();
+        $phone->first()->save();
+        $email->first()->save();
+        $about_us->first()->save();
+
+        return redirect('/dashboard/general_information')->with('success', 'Landing Website General Information Updated Successfully');
     }
 
     /**
